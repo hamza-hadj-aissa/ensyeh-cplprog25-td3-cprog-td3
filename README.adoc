@@ -81,3 +81,9 @@ Cette classe fournira une méthode `nextCommande` qui analysera le texte saisi p
 ** créer une classe implémentant cette interface pour chaque action (rechercher une IP, rechercher un nom, rechercher les machines d'un domaine, ajouter un item dans la BD, quitter l'application).
 . Réaliser la classe principale `DnsApp`.
 La méthode `run` de cette classe interagira avec l'interface utilisateur pour récupérer la prochaine commande, l'exécutera puis affichera la résultat.
+
+## Execution
+Après avoir compilé le projet avec `mvnw clean package`, l'application peut être lancée avec la commande suivante:
+```bash
+java -cp target/collex-1.0-SNAPSHOT.jar fr.uvsq.cprog.collex.ui.DnsTUI resources/dns.txt
+```
