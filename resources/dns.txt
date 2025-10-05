@@ -1,0 +1,5 @@
+www.uvsq.fr 193.51.31.90
+poste.uvsq.fr 193.51.31.154
+ecampus.uvsq.fr 193.51.25.12
+welcome.uvsq.fr 192.168.6.99
+cp.sciences.uvsq.fr 193.51.31.98
