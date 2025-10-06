@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Represents a DNS (Domain Name System) that manages a collection of DNS items,
- * allowing for loading from and saving to a file, as well as querying and adding items.
+ * Represents a DNS (Domain Name System) that manages a collection of DNS items, allowing for
+ * loading from and saving to a file, as well as querying and adding items.
  */
 public class Dns {
   private final List<DnsItem> items = new ArrayList<>();
@@ -28,7 +28,8 @@ public class Dns {
     load();
   }
 
-  /** Loads DNS items list from the database file into the items list.
+  /**
+   * Loads DNS items list from the database file into the items list.
    *
    * @throws IOException if an I/O error occurs while reading the file
    */
@@ -40,7 +41,8 @@ public class Dns {
     }
   }
 
-  /** Saves the current DNS items list to the database file.
+  /**
+   * Saves the current DNS items list to the database file.
    *
    * @throws IOException if an I/O error occurs while writing to the file
    */
@@ -52,7 +54,8 @@ public class Dns {
     Files.write(dbPath, lines);
   }
 
-  /** Retrieves a DNS item by its IP address.
+  /**
+   * Retrieves a DNS item by its IP address.
    *
    * @param ip the IP address to search for
    * @return the corresponding DnsItem, or null if not found
@@ -64,7 +67,8 @@ public class Dns {
         .orElse(null);
   }
 
-  /** Retrieves a DNS item by its machine name.
+  /**
+   * Retrieves a DNS item by its machine name.
    *
    * @param nom the machine name to search for
    * @return the corresponding DnsItem, or null if not found
@@ -76,7 +80,8 @@ public class Dns {
         .orElse(null);
   }
 
-  /** Retrieves a list of DNS items for a specific domain, sorted by machine name.
+  /**
+   * Retrieves a list of DNS items for a specific domain, sorted by machine name.
    *
    * @param domaine the domain to filter by
    * @return a list of DnsItems belonging to the specified domain
@@ -88,7 +93,8 @@ public class Dns {
         .collect(Collectors.toList());
   }
 
-  /** Adds a new DNS item with the specified IP address and machine name.
+  /**
+   * Adds a new DNS item with the specified IP address and machine name.
    *
    * @param ip the IP address of the new item
    * @param nom the machine name of the new item

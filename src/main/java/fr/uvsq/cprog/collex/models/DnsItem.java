@@ -1,8 +1,6 @@
 package fr.uvsq.cprog.collex.models;
 
-/**
- * Represents a DNS item containing an IP address and a machine name.
- */
+/** Represents a DNS item containing an IP address and a machine name. */
 public class DnsItem {
   private final AdresseIp ip;
   private final NomMachine nom;
@@ -10,7 +8,7 @@ public class DnsItem {
   /**
    * Constructs a DnsItem with the specified IP address and machine name.
    *
-   * @param ip  the IP address
+   * @param ip the IP address
    * @param nom the machine name
    */
   public DnsItem(AdresseIp ip, NomMachine nom) {

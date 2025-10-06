@@ -1,6 +1,7 @@
 package fr.uvsq.cprog.collex.models;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 /** Tests unitaires pour la classe AdresseIp. */

@@ -1,14 +1,14 @@
-import java.io.IOException;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
-import java.util.regex.Pattern;
+package fr.uvsq.cprog.collex.ui;
 
 import fr.uvsq.cprog.collex.models.AdresseIp;
 import fr.uvsq.cprog.collex.models.Dns;
 import fr.uvsq.cprog.collex.models.DnsItem;
 import fr.uvsq.cprog.collex.models.NomMachine;
-
+import java.io.IOException;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Scanner;
+import java.util.regex.Pattern;
 
 /**
  * Textual User Interface for DNS management. Supports commands to list, add, and query DNS entries.

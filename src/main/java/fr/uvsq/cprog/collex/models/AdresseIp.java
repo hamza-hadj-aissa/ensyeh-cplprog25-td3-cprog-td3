@@ -1,8 +1,8 @@
 package fr.uvsq.cprog.collex.models;
 
-/** 
- * Represents an IP address with validation.
- * Validates that the IP address is in the correct IPv4 format.
+/**
+ * Represents an IP address with validation. Validates that the IP address is in the correct IPv4
+ * format.
  */
 public class AdresseIp {
   private final String value;
@@ -10,7 +10,7 @@ public class AdresseIp {
   /**
    * Constructs an AdresseIp object with the specified value.
    *
-   * <p>Expects a valid IPv4 format (e.g., 192.168.1.1)</p>
+   * <p>Expects a valid IPv4 format (e.g., 192.168.1.1)
    *
    * @param value the IP address to validate and store
    * @throws IllegalArgumentException if the value is null or does not match the required pattern

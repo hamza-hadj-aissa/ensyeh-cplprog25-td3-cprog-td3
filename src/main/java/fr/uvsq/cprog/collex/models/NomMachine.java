@@ -1,8 +1,8 @@
 package fr.uvsq.cprog.collex.models;
 
 /**
- * Represents a machine name (hostname) with validation.
- * A machine name consists of a name and a domain, for example: www.uvsq.fr
+ * Represents a machine name (hostname) with validation. A machine name consists of a name and a
+ * domain, for example: www.uvsq.fr
  */
 public class NomMachine {
 
@@ -11,8 +11,8 @@ public class NomMachine {
   /**
    * Constructs a NomMachine object with the specified value.
    *
-   * <p>Expects a valid FQDN (Fully Qualified Domain Name) format.
-   * Ex: sciences.uvsq.fr, mail.google.com</p>
+   * <p>Expects a valid FQDN (Fully Qualified Domain Name) format. Ex: sciences.uvsq.fr,
+   * mail.google.com
    *
    * @param value the machine name to validate and store
    * @throws IllegalArgumentException if the value is null or does not match the required pattern
@@ -27,7 +27,6 @@ public class NomMachine {
 
     this.value = value;
   }
-
 
   public String getMachine() {
     return value.split("\\.")[0];
