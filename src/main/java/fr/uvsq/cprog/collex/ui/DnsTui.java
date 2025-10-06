@@ -1,26 +1,36 @@
-package fr.uvsq.cprog.collex.ui;
-
-import fr.uvsq.cprog.collex.models.AdresseIp;
-import fr.uvsq.cprog.collex.models.Dns;
-import fr.uvsq.cprog.collex.models.DnsItem;
-import fr.uvsq.cprog.collex.models.NomMachine;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class DnsTUI {
+import fr.uvsq.cprog.collex.models.AdresseIp;
+import fr.uvsq.cprog.collex.models.Dns;
+import fr.uvsq.cprog.collex.models.DnsItem;
+import fr.uvsq.cprog.collex.models.NomMachine;
+
+
+/**
+ * Textual User Interface for DNS management. Supports commands to list, add, and query DNS entries.
+ */
+public class DnsTui {
 
   private final Dns dns;
   private final Scanner scanner = new Scanner(System.in);
 
   private static final Pattern IP_PATTERN = Pattern.compile("\\d{1,3}(\\.\\d{1,3}){3}");
 
-  public DnsTUI(String filePath) throws IOException {
+  /**
+   * Constructor initializing the DNS from a file.
+   *
+   * @param filePath Path to the DNS file.
+   * @throws IOException If there is an error reading the file.
+   */
+  public DnsTui(String filePath) throws IOException {
     this.dns = new Dns(filePath);
   }
 
+  /** Main loop to run the TUI. */
   public void run() {
     System.out.println("=== DNS TUI ===");
     System.out.println("Tapez une commande (ls, add, nom.qualifie, adr.ip ou 'exit' pour quitter)");
@@ -45,6 +55,12 @@ public class DnsTUI {
     }
   }
 
+  /**
+   * Handles a single command input.
+   *
+   * @param input The command input string.
+   * @throws IOException If there is an error processing the command.
+   */
   private void handleCommand(String input) throws IOException {
     String[] parts = input.split("\\s+");
 
@@ -53,7 +69,7 @@ public class DnsTUI {
     } else if (parts[0].equals("add")) {
       handleAddCommand(parts);
     } else if (IP_PATTERN.matcher(parts[0]).matches()) {
-      handleIPQuery(parts[0]);
+      handleIpQuery(parts[0]);
     } else if (parts[0].contains(".")) {
       handleNameQuery(parts[0]);
     } else {
@@ -61,12 +77,17 @@ public class DnsTUI {
     }
   }
 
+  /**
+   * Handles the 'ls' command to list DNS entries.
+   *
+   * @param parts The command parts split by whitespace.
+   */
   private void handleListCommand(String[] parts) {
-    boolean sortByIP = false;
+    boolean sortByIp = false;
     String domain;
 
     if (parts.length == 3 && parts[1].equals("-a")) {
-      sortByIP = true;
+      sortByIp = true;
       domain = parts[2];
     } else if (parts.length == 2) {
       domain = parts[1];
@@ -77,7 +98,7 @@ public class DnsTUI {
 
     List<DnsItem> items = dns.getItems(domain);
 
-    if (sortByIP) {
+    if (sortByIp) {
       items.sort(Comparator.comparing(i -> i.getIp().getValue()));
     }
 
@@ -86,6 +107,12 @@ public class DnsTUI {
     }
   }
 
+  /**
+   * Handles the 'add' command to add a new DNS entry.
+   *
+   * @param parts The command parts split by whitespace.
+   * @throws IOException If there is an error adding the entry.
+   */
   private void handleAddCommand(String[] parts) throws IOException {
     if (parts.length != 3) {
       System.out.println("Usage : add adr.es.se.ip nom.qualifie.machine");
@@ -97,6 +124,11 @@ public class DnsTUI {
     dns.addItem(ip, nom);
   }
 
+  /**
+   * Handles a query by machine name.
+   *
+   * @param name The machine name to query.
+   */
   private void handleNameQuery(String name) {
     DnsItem item = dns.getItem(new NomMachine(name));
     if (item == null) {
@@ -106,7 +138,12 @@ public class DnsTUI {
     }
   }
 
-  private void handleIPQuery(String ipStr) {
+  /**
+   * Handles a query by IP address.
+   *
+   * @param ipStr The IP address to query.
+   */
+  private void handleIpQuery(String ipStr) {
     DnsItem item = dns.getItem(new AdresseIp(ipStr));
     if (item == null) {
       System.out.println("ERREUR : Adresse IP inconnue");
@@ -115,14 +152,19 @@ public class DnsTUI {
     }
   }
 
+  /**
+   * Program entry point.
+   *
+   * @param args Command-line arguments.
+   */
   public static void main(String[] args) {
     if (args.length != 1) {
-      System.out.println("Usage : java DnsTUI <fichier_dns>");
+      System.out.println("Usage : java DnsTui <fichier_dns>");
       return;
     }
 
     try {
-      DnsTUI tui = new DnsTUI(args[0]);
+      DnsTui tui = new DnsTui(args[0]);
       tui.run();
     } catch (IOException e) {
       System.out.println("Erreur de lecture du fichier : " + e.getMessage());
