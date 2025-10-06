@@ -1,15 +1,15 @@
 package fr.uvsq.cprog.collex.models;
 
 public class DnsItem {
-  private final AdresseIP ip;
+  private final AdresseIp ip;
   private final NomMachine nom;
 
-  public DnsItem(AdresseIP ip, NomMachine nom) {
+  public DnsItem(AdresseIp ip, NomMachine nom) {
     this.ip = ip;
     this.nom = nom;
   }
 
-  public AdresseIP getIp() {
+  public AdresseIp getIp() {
     return ip;
   }
 

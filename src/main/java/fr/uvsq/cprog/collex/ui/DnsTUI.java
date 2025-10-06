@@ -1,6 +1,6 @@
 package fr.uvsq.cprog.collex.ui;
 
-import fr.uvsq.cprog.collex.models.AdresseIP;
+import fr.uvsq.cprog.collex.models.AdresseIp;
 import fr.uvsq.cprog.collex.models.Dns;
 import fr.uvsq.cprog.collex.models.DnsItem;
 import fr.uvsq.cprog.collex.models.NomMachine;
@@ -92,7 +92,7 @@ public class DnsTUI {
       return;
     }
 
-    AdresseIP ip = new AdresseIP(parts[1]);
+    AdresseIp ip = new AdresseIp(parts[1]);
     NomMachine nom = new NomMachine(parts[2]);
     dns.addItem(ip, nom);
   }
@@ -107,7 +107,7 @@ public class DnsTUI {
   }
 
   private void handleIPQuery(String ipStr) {
-    DnsItem item = dns.getItem(new AdresseIP(ipStr));
+    DnsItem item = dns.getItem(new AdresseIp(ipStr));
     if (item == null) {
       System.out.println("ERREUR : Adresse IP inconnue");
     } else {

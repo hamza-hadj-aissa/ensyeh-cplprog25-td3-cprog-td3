@@ -1,15 +1,15 @@
 package fr.uvsq.cprog.collex.models;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+
 import org.junit.After;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -38,15 +38,15 @@ public class DnsTest {
   }
 
   @Test
-  public void testGetItemByIP() {
-    DnsItem item = dns.getItem(new AdresseIP("193.51.31.90"));
+  public void testGetItemByIp() {
+    DnsItem item = dns.getItem(new AdresseIp("193.51.31.90"));
     assertNotNull(item);
     assertEquals("www.uvsq.fr", item.getNom().getValue());
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testGetItemByInvalidIP() {
-    dns.getItem(new AdresseIP("999.999.999.999"));
+  public void testGetItemByInvalidIp() {
+    dns.getItem(new AdresseIp("999.999.999.999"));
   }
 
   @Test
@@ -72,7 +72,7 @@ public class DnsTest {
 
   @Test
   public void testAddNewItem() throws IOException {
-    AdresseIP ip = new AdresseIP("193.51.25.24");
+    AdresseIp ip = new AdresseIp("193.51.25.24");
     NomMachine nom = new NomMachine("welcome.uvsq.fr");
     dns.addItem(ip, nom);
 
@@ -86,12 +86,12 @@ public class DnsTest {
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testAddDuplicateIPThrows() throws IOException {
-    dns.addItem(new AdresseIP("193.51.31.90"), new NomMachine("newhost.uvsq.fr"));
+  public void testAddDuplicateIpThrows() throws IOException {
+    dns.addItem(new AdresseIp("193.51.31.90"), new NomMachine("newhost.uvsq.fr"));
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testAddDuplicateNameThrows() throws IOException {
-    dns.addItem(new AdresseIP("193.51.99.99"), new NomMachine("www.uvsq.fr"));
+    dns.addItem(new AdresseIp("193.51.99.99"), new NomMachine("www.uvsq.fr"));
   }
 }

@@ -8,7 +8,7 @@ public class DnsItemTest {
 
   @Test
   public void testDnsItem() {
-    AdresseIP ip = new AdresseIP("192.168.1.1");
+    AdresseIp ip = new AdresseIp("192.168.1.1");
     NomMachine nm = new NomMachine("serveur.local");
     DnsItem item = new DnsItem(ip, nm);
     assertEquals(ip, item.getIp());
