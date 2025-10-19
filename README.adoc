@@ -87,5 +87,5 @@ La méthode `run` de cette classe interagira avec l'interface utilisateur pour r
 ## Execution
 Après avoir compilé le projet avec `mvnw clean package`, l'application peut être lancée avec la commande suivante:
 ```bash
-java -cp target/collex-1.0-SNAPSHOT.jar fr.uvsq.cprog.collex.ui.DnsTUI resources/dns.txt
+java -cp target/collex-1.0-SNAPSHOT.jar fr.uvsq.cprog.collex.ui.DnsTui resources/dns.txt
 ```
